@@ -1,4 +1,4 @@
-package com.lpg.ciarnurnotimer;
+package com.lpg.ciarnurotimer;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -54,7 +54,7 @@ public class DozerCancer extends Service {
                     new Notification.Builder(this, "1")
                             .setContentTitle(getText(R.string.notification_title))
                             .setContentText(getText(R.string.notification_message))
-                            .setSmallIcon(R.drawable.ic_launcher_foreground)
+                            .setSmallIcon(R.mipmap.ic_launcher)
                             .setContentIntent(pendingIntent)
                             .build();
 

@@ -1,4 +1,4 @@
-package com.lpg.ciarnurnotimer;
+package com.lpg.ciarnurotimer;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
