@@ -115,7 +115,7 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
                     //Confirm exit the application
                     showExitDialog();
                 } else {
-                    System.exit(0);
+                    finish();
                 }
             }
         });
@@ -156,7 +156,7 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
 
         exitDialog.setPositiveButton("Esci", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                System.exit(0);
+                finish();
             }
         });
 
