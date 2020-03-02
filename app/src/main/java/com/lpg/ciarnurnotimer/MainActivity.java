@@ -1,7 +1,5 @@
 package com.lpg.ciarnurnotimer;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,7 +20,8 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
 
         mWebView = (AdvancedWebView) findViewById(R.id.webview);
         mWebView.setListener(this, this);
-        mWebView.loadUrl("https://www.google.com/");
+        //mWebView.loadUrl("https://www.google.com/");
+        mWebView.loadUrl("file:///android_asset/index.html");
     }
 
     @SuppressLint("NewApi")
@@ -56,7 +55,8 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
         if (!mWebView.onBackPressed()) {
             return;
         }
-        super.onBackPressed();
+        //Prevents closing the app by mistake
+        //super.onBackPressed();
     }
 
     @Override
