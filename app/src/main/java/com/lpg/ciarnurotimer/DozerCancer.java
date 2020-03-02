@@ -54,7 +54,7 @@ public class DozerCancer extends Service {
                     new Notification.Builder(this, "1")
                             .setContentTitle(getText(R.string.notification_title))
                             .setContentText(getText(R.string.notification_message))
-                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setSmallIcon(R.drawable.ic_notification)
                             .setContentIntent(pendingIntent)
                             .build();
 
