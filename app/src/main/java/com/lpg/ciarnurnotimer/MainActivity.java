@@ -19,7 +19,10 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
         setContentView(ACTIVITY_LAYOUT);
 
         mWebView = (AdvancedWebView) findViewById(R.id.webview);
+
         mWebView.setListener(this, this);
+        mWebView.addPermittedHostname("");
+
         //mWebView.loadUrl("https://www.google.com/");
         mWebView.loadUrl("file:///android_asset/index.html");
     }
@@ -77,6 +80,9 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
 
     @Override
     public void onExternalPageRequest(String url) {
+        if (AdvancedWebView.Browsers.hasAlternative(this)) {
+            AdvancedWebView.Browsers.openUrl(this, url);
+        }
     }
 
 }
