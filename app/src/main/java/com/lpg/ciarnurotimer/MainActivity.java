@@ -92,6 +92,7 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
     @Override
     protected void onDestroy() {
         mWebView.onDestroy();
+        stopForegroundService();
         super.onDestroy();
     }
 
