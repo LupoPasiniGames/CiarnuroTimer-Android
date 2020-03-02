@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Ciarnurno Timer</string>
-    <string name="notification_title">Ciarnurno Timer</string>
-    <string name="notification_message">È in corso una partita su Ciarnuro</string>
+    <string name="app_name">Il Ciarnuro Round Timer</string>
+    <string name="notification_title">Il Ciarnuro Round Timer</string>
+    <string name="notification_message">Tocca per tornare alla partita</string>
     <string name="channel_name">Servizio</string>
     <string name="channel_description">Viene mostrata una notifica permanente durante una partita</string>
 </resources>
