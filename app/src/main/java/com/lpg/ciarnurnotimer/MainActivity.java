@@ -2,9 +2,13 @@ package com.lpg.ciarnurnotimer;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.webkit.ValueCallback;
 
 import im.delight.android.webview.AdvancedWebView;
 
@@ -23,7 +27,6 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
         mWebView.setListener(this, this);
         mWebView.addPermittedHostname("");
 
-        //mWebView.loadUrl("https://www.google.com/");
         mWebView.loadUrl("file:///android_asset/index.html");
     }
 
@@ -58,6 +61,20 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
         if (!mWebView.onBackPressed()) {
             return;
         }
+
+        mWebView.evaluateJavascript("leaveConfirmRequired", new ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String s) {
+                if (s.equalsIgnoreCase("true")) {
+                    //Confirm exit the application
+                    showExitDialog();
+                } else {
+                    System.exit(0);
+                }
+            }
+        });
+
+
         //Prevents closing the app by mistake
         //super.onBackPressed();
     }
@@ -80,9 +97,25 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
 
     @Override
     public void onExternalPageRequest(String url) {
-        if (AdvancedWebView.Browsers.hasAlternative(this)) {
-            AdvancedWebView.Browsers.openUrl(this, url);
-        }
+        //Opens the external url in the browser
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+    }
+
+    private void showExitDialog() {
+        AlertDialog.Builder exitDialog = new AlertDialog.Builder(this);
+        exitDialog.setTitle("Sei sicuro di voler uscire dall'applicazione?");
+        exitDialog.setMessage("Se uscirai annullerai la partita in corso!");
+
+        exitDialog.setPositiveButton("Esci", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                System.exit(0);
+            }
+        });
+
+        // A null listener allows the button to dismiss the dialog and take no further action.
+        exitDialog.setNegativeButton("Annulla", null);
+        AlertDialog alert = exitDialog.create();
+        alert.show();
     }
 
 }
