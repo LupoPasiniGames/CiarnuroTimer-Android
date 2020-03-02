@@ -42,6 +42,11 @@ public class DozerCancer extends Service {
     private void startForegroundService() {
         if (Build.VERSION.SDK_INT >= 26) {
             Intent notificationIntent = new Intent(this, MainActivity.class);
+
+            //These two lines disable the creation of a new activity when tapping on the service notification
+            notificationIntent.setAction(Intent.ACTION_MAIN);
+            notificationIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+
             PendingIntent pendingIntent =
                     PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
