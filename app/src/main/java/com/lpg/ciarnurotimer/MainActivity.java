@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements AdvancedWebView.Listener {
         mWebView.setListener(this, this);
         mWebView.addPermittedHostname("");
 
-        mWebView.loadUrl("file:///android_asset/index.html");
+        mWebView.loadUrl("file:///android_asset/CiarnuroTimer-Web/index.html");
 
         Timer persistenceTimer = new Timer();
         persistenceTimer.schedule(new TimerTask() {

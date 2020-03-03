@@ -4,14 +4,16 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.1'
-        
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+}
+
+plugins {
+    id 'org.ajoberstar.grgit' version '4.0.1' apply false
 }
 
 allprojects {
@@ -24,4 +26,10 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+    delete "app/src/main/assets/CiarnuroTimer-Web"
+}
+
+task fetchAssets() {
+    delete "app/src/main/assets/CiarnuroTimer-Web"
+    org.ajoberstar.grgit.Grgit.clone(dir: "app/src/main/assets/CiarnuroTimer-Web", uri:"https://github.com/LupoPasiniGames/CiarnuroTimer-Web")
 }
